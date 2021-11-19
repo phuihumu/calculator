@@ -1,4 +1,8 @@
 const inDisplay = document.querySelector('.inDisplay');
+const opDisplay = document.querySelector('.opDisplay');
+let currentValue;
+let prevValue;
+let operation;
 
 /* Base calculator functions */
 
@@ -42,11 +46,33 @@ function operate(operator, num1, num2)
 const numButton = document.querySelectorAll('.num');
 numButton.forEach((numButton)=> {
     numButton.addEventListener('click', displayValue);
-})
+});
 
+const operatorButton = document.querySelectorAll('.function');
+operatorButton.forEach((operatorButton)=> {
+    operatorButton.addEventListener('click', getOperator)
+});
+
+function getOperator(event) {
+    prevValue = currentValue;
+    operation = event.target.innerText;
+    opDisplay.textContent = prevValue + " " + operation;
+}
 
 function displayValue(event) {
-    let value = event.target.innerText;
-    inDisplay.textContent = value;
-    return value;
+    currentValue = event.target.innerText;
+    inDisplay.textContent = currentValue;
+    return currentValue;
 }
+
+const equalButton = document.querySelector('#equal');
+equalButton.addEventListener('click', () => {
+    if (operation === null || prevValue === null || currentValue === null)
+    {
+        
+    }
+    else {
+        operate(operation,prevValue,currentValue);
+    }
+
+});
