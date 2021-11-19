@@ -76,6 +76,7 @@ equalButton.addEventListener('click', () => {
     else {
         let result = operate(operation,prevValue,currentValue);
         opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
+        currentValue = result;
         inDisplay.textContent = result;
     }
 
