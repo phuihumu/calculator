@@ -1,0 +1,12 @@
+.button-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: repeat(5, 75px);
+}
+
+#longer {
+    grid-column: span 2;
+}
