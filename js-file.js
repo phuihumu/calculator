@@ -1,3 +1,5 @@
+const inDisplay = document.querySelector('.inDisplay');
+
 /* Base calculator functions */
 
 function add(num1, num2) {
@@ -35,4 +37,16 @@ function operate(operator, num1, num2)
         result = divide(num1,num2);
     }
     return result;
+}
+
+const numButton = document.querySelectorAll('.num');
+numButton.forEach((numButton)=> {
+    numButton.addEventListener('click', displayValue);
+})
+
+
+function displayValue(event) {
+    let value = event.target.innerText;
+    inDisplay.textContent = value;
+    return value;
 }
