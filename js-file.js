@@ -21,7 +21,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1/num2;
+    let product = num1/num2;
+    product = product.toFixed(4);
+    return product;
 }
 
 function operate(operator, num1, num2)
