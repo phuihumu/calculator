@@ -72,7 +72,9 @@ equalButton.addEventListener('click', () => {
         
     }
     else {
-        operate(operation,prevValue,currentValue);
+        let result = operate(operation,prevValue,currentValue);
+        opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
+        inDisplay.textContent = result;
     }
 
 });
