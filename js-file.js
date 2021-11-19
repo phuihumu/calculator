@@ -80,6 +80,22 @@ decimal.addEventListener('click', () => {
     }
 });
 
+const signButton = document.querySelector('.sign');
+signButton.addEventListener('click', () => {
+    if (numOfArgs >= 1)
+    {
+        if (Math.sign(currentValue) === 1)
+        {
+            currentValue = -Math.abs(currentValue);
+        }
+        else
+        {
+            currentValue = Math.abs(currentValue);
+        } 
+        inDisplay.textContent = currentValue;
+    }
+});
+
 function getOperator(event) {
     if (numOfArgs >= 1)
     {
