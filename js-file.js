@@ -4,6 +4,7 @@ let currentValue;
 let prevValue;
 let operation;
 let operationPressed = true;
+let equalPressed = false;
 let dotPressed = false;
 let numOfArgs = 0;
 
@@ -91,7 +92,7 @@ function getOperator(event) {
 function displayValue(event) {
     currentValue = event.target.innerText;
     numOfArgs++;
-    if (operationPressed)
+    if (operationPressed || equalPressed)
     {
         inDisplay.textContent = currentValue;
     }
@@ -99,12 +100,14 @@ function displayValue(event) {
         inDisplay.textContent = inDisplay.textContent.concat(currentValue);
     }
     operationPressed = false;
+    equalPressed = false;
     currentValue = inDisplay.textContent;
 }
 
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
     if (numOfArgs >= 2) {
+        equalPressed = true;
         let result = operate(operation,prevValue,currentValue);
         opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
         currentValue = result;
