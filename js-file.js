@@ -4,6 +4,7 @@ let currentValue;
 let prevValue;
 let operation;
 let operationPressed = true;
+let equalsPressed = false;
 let numOfArgs = 0;
 
 /* Base calculator functions */
@@ -58,7 +59,7 @@ operatorButton.forEach((operatorButton)=> {
 });
 
 function getOperator(event) {
-    if (numOfArgs != 0)
+    if (numOfArgs >= 1)
     {
         if (prevValue != null)
         {
@@ -92,11 +93,13 @@ function displayValue(event) {
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
     if (numOfArgs >= 2) {
+        equalsPressed = true;
         let result = operate(operation,prevValue,currentValue);
         opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
         currentValue = result;
+        prevValue = null;
         inDisplay.textContent = result;
-        numOfArgs = 0;
+        numOfArgs = 1;
     }
 
 });
