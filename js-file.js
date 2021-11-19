@@ -3,7 +3,8 @@ const opDisplay = document.querySelector('.opDisplay');
 let currentValue;
 let prevValue;
 let operation;
-let operationPressed = false;
+let operationPressed = true;
+let equalsPressed = false;
 
 /* Base calculator functions */
 
@@ -57,7 +58,14 @@ operatorButton.forEach((operatorButton)=> {
 });
 
 function getOperator(event) {
-    prevValue = currentValue;
+    if (prevValue != null)
+    {
+        let result = operate(operation, prevValue, currentValue);
+        prevValue = result;
+    }
+    else {
+        prevValue = currentValue;
+    }
     operation = event.target.innerText;
     opDisplay.textContent = prevValue + " " + operation;
     operationPressed = true;
