@@ -22,15 +22,14 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     let product = num1/num2;
-    product = product.toFixed(4);
     return product;
 }
 
 function operate(operator, num1, num2)
 {
     let result;
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     if (operator === "+")
     {
         result = add(num1,num2);
@@ -46,6 +45,7 @@ function operate(operator, num1, num2)
     else {
         result = divide(num1,num2);
     }
+    result = result.toFixed(4);
     return result;
 }
 
