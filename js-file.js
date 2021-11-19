@@ -25,6 +25,8 @@ function divide(num1, num2) {
 function operate(operator, num1, num2)
 {
     let result;
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
     if (operator === "+")
     {
         result = add(num1,num2);
