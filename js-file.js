@@ -47,7 +47,10 @@ function operate(operator, num1, num2)
     else {
         result = divide(num1,num2);
     }
-    result = result.toFixed(4);
+    if (result % 1 != 0)
+    {    
+        result = result.toFixed(3);
+    }
     return result;
 }
 
