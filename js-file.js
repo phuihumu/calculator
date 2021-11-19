@@ -4,6 +4,7 @@ let currentValue;
 let prevValue;
 let operation;
 let operationPressed = true;
+let dotPressed = false;
 let numOfArgs = 0;
 
 /* Base calculator functions */
@@ -59,6 +60,15 @@ operatorButton.forEach((operatorButton)=> {
     operatorButton.addEventListener('click', getOperator)
 });
 
+const decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', () => {
+    if (!dotPressed)
+    {
+        displayValue(event);
+        dotPressed = true;
+    }
+});
+
 function getOperator(event) {
     if (numOfArgs >= 1)
     {
@@ -74,6 +84,7 @@ function getOperator(event) {
         operation = event.target.innerText;
         opDisplay.textContent = prevValue + " " + operation;
         operationPressed = true;
+        dotPressed = false;
     }
 }
 
@@ -99,6 +110,7 @@ equalButton.addEventListener('click', () => {
         currentValue = result;
         prevValue = null;
         inDisplay.textContent = result;
+        dotPressed = false;
         numOfArgs = 1;
     }
 
@@ -108,6 +120,7 @@ const clearButton = document.querySelector('.clear');
 clearButton.addEventListener('click', () => {
     currentValue,prevValue,operation = null;
     operationPressed = true;
+    dotPressed = false;
     numOfArgs = 0;
     opDisplay.textContent = null;
     inDisplay.textContent = 0;
