@@ -4,7 +4,7 @@ let currentValue;
 let prevValue;
 let operation;
 let operationPressed = true;
-let equalsPressed = false;
+let numOfArgs = 0;
 
 /* Base calculator functions */
 
@@ -58,21 +58,26 @@ operatorButton.forEach((operatorButton)=> {
 });
 
 function getOperator(event) {
-    if (prevValue != null)
+    if (numOfArgs != 0)
     {
-        let result = operate(operation, prevValue, currentValue);
-        prevValue = result;
+        if (prevValue != null)
+        {
+            let result = operate(operation, prevValue, currentValue);
+            prevValue = result;
+            inDisplay.textContent = result;
+        }
+        else {
+            prevValue = currentValue;
+        }
+        operation = event.target.innerText;
+        opDisplay.textContent = prevValue + " " + operation;
+        operationPressed = true;
     }
-    else {
-        prevValue = currentValue;
-    }
-    operation = event.target.innerText;
-    opDisplay.textContent = prevValue + " " + operation;
-    operationPressed = true;
 }
 
 function displayValue(event) {
     currentValue = event.target.innerText;
+    numOfArgs++;
     if (operationPressed)
     {
         inDisplay.textContent = currentValue;
@@ -86,15 +91,12 @@ function displayValue(event) {
 
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
-    if (operation === null || prevValue === null || currentValue === null)
-    {
-        
-    }
-    else {
+    if (numOfArgs >= 2) {
         let result = operate(operation,prevValue,currentValue);
         opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
         currentValue = result;
         inDisplay.textContent = result;
+        numOfArgs = 0;
     }
 
 });
