@@ -23,8 +23,11 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    let product = num1/num2;
-    return product;
+    return num1/num2;
+}
+
+function modulo(num1, num2) {
+    return num1%num2;
 }
 
 function operate(operator, num1, num2)
@@ -44,8 +47,12 @@ function operate(operator, num1, num2)
     {
         result = multiply(num1,num2);
     }
-    else {
+    else if (operator === "/")
+    {
         result = divide(num1,num2);
+    }
+    else {
+        result = modulo(num1,num2);
     }
     if (result % 1 != 0)
     {    
