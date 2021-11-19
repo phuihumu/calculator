@@ -3,6 +3,7 @@ const opDisplay = document.querySelector('.opDisplay');
 let currentValue;
 let prevValue;
 let operation;
+let operationPressed = false;
 
 /* Base calculator functions */
 
@@ -59,12 +60,20 @@ function getOperator(event) {
     prevValue = currentValue;
     operation = event.target.innerText;
     opDisplay.textContent = prevValue + " " + operation;
+    operationPressed = true;
 }
 
 function displayValue(event) {
     currentValue = event.target.innerText;
-    inDisplay.textContent = currentValue;
-    return currentValue;
+    if (operationPressed)
+    {
+        inDisplay.textContent = currentValue;
+    }
+    else {
+        inDisplay.textContent = inDisplay.textContent.concat(currentValue);
+    }
+    operationPressed = false;
+    currentValue = inDisplay.textContent;
 }
 
 const equalButton = document.querySelector('#equal');
