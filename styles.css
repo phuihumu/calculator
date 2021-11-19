@@ -6,6 +6,23 @@
     grid-template-columns: repeat(4, 75px);
     grid-template-rows: repeat(6, 75px);
     padding: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.num, .decimal {
+    size: 50px;
+    background-color: rgb(140, 172, 233);
+}
+
+.function, .clear, .sign, #equal {
+    background-color: rgb(252, 175, 59);
+}
+
+button {
+    padding: 20px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: white;
 }
 
 .longer {
@@ -14,7 +31,7 @@
 
 .display {
     display: flex;
-    background-color: lightgrey;
+    background-color: rgb(255, 232, 210);
     grid-column: span 4;
     flex-direction: column;
     justify-content: space-around;
