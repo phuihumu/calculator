@@ -4,7 +4,6 @@ let currentValue;
 let prevValue;
 let operation;
 let operationPressed = true;
-let equalsPressed = false;
 let numOfArgs = 0;
 
 /* Base calculator functions */
@@ -93,7 +92,6 @@ function displayValue(event) {
 const equalButton = document.querySelector('#equal');
 equalButton.addEventListener('click', () => {
     if (numOfArgs >= 2) {
-        equalsPressed = true;
         let result = operate(operation,prevValue,currentValue);
         opDisplay.textContent = prevValue + " " + operation + " " + currentValue + " ="
         currentValue = result;
@@ -103,3 +101,12 @@ equalButton.addEventListener('click', () => {
     }
 
 });
+
+const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    currentValue,prevValue,operation = null;
+    operationPressed = true;
+    numOfArgs = 0;
+    opDisplay.textContent = null;
+    inDisplay.textContent = 0;
+})
